@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    font-family: "Google Sans", sans-serif;
+}
+
+.header{
+    width: 90%;
+    max-width: 1434px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
