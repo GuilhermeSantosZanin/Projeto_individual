@@ -1,0 +1,136 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background-color: white;
+}
+
+.header {
+    background-color: black;
+    height: 80px;
+}
+
+.container-header {
+    width: 85%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    color: white;
+    font-size: 32px;
+}
+
+.navbar {
+    display: flex;
+    width: 300px;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-menu {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.agora {
+    background-color: #ffcc00;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+.link-login {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login {
+    background-color: white;
+    padding: 100px 0;
+}
+
+.container-login {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card-login {
+    width: 450px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-login {
+    color: black;
+    font-size: 32px;
+}
+
+.formulario {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.entrada {
+    height: 38px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 5px;
+}
+
+.botao {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    height: 45px;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.alerta_erro {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_erro {
+    display: none;
+    background-color: white;
+    color: black;
+    border: 2px solid red;
+    padding: 10px;
+    width: 250px;
+}
+
+.loading-div {
+    display: none;
+}
+
+.imagem-carregamento {
+    width: 50px;
+}
+
+#div_erros_login {
+    display: none;
+}

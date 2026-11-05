@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title></title>
+
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/cadastro_PI.css" />
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container-header">
+
+            <h1 class="titulo">Mudanças Zanin</h1>
+
+            <div class="navbar">
+                <div>
+                    <a class="link-menu" href="">Inicial</a>
+                </div>
+                <div>
+                    <a class="link-menu" href="login.html">Login</a>
+                </div>
+                <div class="agora">
+                    <a class="link-cadastro" href="cadastro.html">Cadastro</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="login">
+
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+
+        <div class="container-cadastro">
+
+            <div class="imagem-caminhao">
+                <img class="foto-caminhao" src="./assets/caminhao.png">
+            </div>
+
+            <div class="card-cadastro">
+
+                <h2 class="titulo-cadastro">Cadastro</h2>
+
+                <div class="formulario">
+
+                    <div class="campo">
+                        <span>Nome:</span>
+                        <input class="entrada" id="nome_input" type="text" />
+                    </div>
+
+                    <div class="campo">
+                        <span>E-mail:</span>
+                        <input class="entrada" id="email_input" type="text" />
+                    </div>
+
+                    <div class="campo">
+                        <span>Senha:</span>
+                        <input class="entrada" id="senha_input" type="password" />
+                    </div>
+
+                    <div class="campo">
+                        <span>Confirmação da Senha:</span>
+                        <input class="entrada" id="confirmacao_senha_input" type="password" />
+                    </div>
+
+                    <div class="campo">
+                        <span>CPF:</span>
+                        <input class="entrada" id="cpf_input" type="text" />
+                    </div>
+
+                    <button class="botao" onclick="cadastrar()">Cadastrar</button>
+
+                </div>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img class="imagem-carregamento" src="./assets/circle-loading.gif" id="loading-gif" />
+                </div>
+
+                <div id="div_erros_login"></div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    // Array para armazenar empresas cadastradas para validação de código de ativação 
+
+
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var cpfVar = cpf_input.value;
+
+        // Verificando todas a possibilidades do cadastro
+        let campos = [nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar];
+
+        for (i = 0; i < campos.length; i++) {
+            if (campos[i] == "") {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML =
+                    "(Mensagem de erro para todos os campos em branco)";
+                return false;
+            } else {
+                setInterval(sumirMensagem, 5000);
+            }
+        }
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "As senhas não coincidem!";
+            return false;
+        }
+
+        if (senhaVar.length <= 8) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Frase muito curta!";
+            return false;
+        }
+        if (!emailVar.endsWith(".com")) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "O E-mail não termina com .com "
+            return false;
+        } if (nomeVar.includes("!")
+            || nomeVar.includes("@")
+            || nomeVar.includes("#")
+            || nomeVar.includes("$")
+            || nomeVar.includes("%")
+            || nomeVar.includes("&")
+            || nomeVar.includes("*")) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "O nome não pode começar com caracteres!"
+            return false;
+        }
+        if (!emailVar.includes("@")) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Precisa ter @ no E-mail"
+            return false;
+        }
+        if (emailVar.startsWith("@")) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Precisa ter algo escrito antes do @"
+            return false;
+        }
+        if (cpfVar.length != 14) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "O cpf precisa ter 14 caracteres contanto com pontos e traços!"
+            return false;
+        }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cpfServer: cpfVar,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+    // Listando empresas cadastradas 
+
+
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+</script>
