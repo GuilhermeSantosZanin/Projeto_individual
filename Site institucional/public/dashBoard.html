@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dashBoard_PI.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="menu">
+            <h1 class="titulo-mudanca">Gestão de Mudanças</h1>
+            <a class="botao-dash" href="">Dashboard</a>
+            <a class="botao-mudanca" href="dashBoard.html">Mudanças</a>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="cabecalho">
+                <h1 class="titulo-Dashboard">Dashboard</h1>
+                <h5 class="ola-casemiro">Olá, Casemiro!</h5>
+            </div>
+
+            <div class="kpi-faturamento">FATURAMENTO DE NOVEMBRO DE 2026</div>
+
+            <div class="grafico-dash">
+                <canvas id="grafico-barras"></canvas>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.1/dist/chart.umd.min.js"></script>
+</body>
+
+</html>
+<script>
+
+    new Chart(
+        document.getElementById('grafico-barras'),
+        {
+            type: 'bar',
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: false,
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                }
+            },
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembto', 'Outubro', 'Novembro', 'Dezembro'],
+                datasets: [
+                    {
+                        label: 'Faturamento Mensal',
+                        data: [1000, 2000, 3000,580,1530,2580,5775,3040,2000,980,340,4530],
+                        backgroundColor: '#FFCC00'
+                    }
+                ]
+            }
+        }
+    );
+</script>

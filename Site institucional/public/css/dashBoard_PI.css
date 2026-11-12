@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "Google Sans", sans-serif;
+}
+
+.container {
+    max-width: 1520px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+}
+
+.menu {
+    background-color: #161719;
+    width: 245px;
+    height: 760px;
+}
+
+.kpi-faturamento {
+    background-color: #18191B;
+    height: 215px;
+    width: 360px;
+    border-radius: 16px;
+    margin-left: 51px;
+    margin-top: 50px;
+    padding-left: 28px;
+    padding-top: 35px;
+}
+
+.titulo-Dashboard {
+    margin: 0;
+}
+
+.titulo-mudanca {
+    font-size: 20px;
+    color: #FFCC00;
+    margin-top: 48px;
+    margin-left: 22px;
+}
+
+.botao-dash {
+    width: 208px;
+    height: 46px;
+    border-radius: 8px;
+    background-color: #2B2B28;
+    color: white;
+    display: block;
+    padding-left: 28px;
+    padding-top: 13px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 18px;
+    margin-top: 99px;
+}
+
+.botao-mudanca {
+    width: 208px;
+    height: 46px;
+    border-radius: 8px;
+    background-color: #2B2B28;
+    color: white;
+    display: block;
+    padding-left: 28px;
+    padding-top: 13px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 18px;
+    margin-top: 33px;
+}
+
+.grafico-dash {
+    width: 1140px;
+    height: 340px;
+    background-color: #1C1D21;
+    border-radius: 14px;
+    margin-left: 51px;
+    margin-top: 29px;
+}
+
+.ola-casemiro {
+    font-size: 22px;
+    margin: 0;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 51px;
+    margin-top: 55px;
+}
