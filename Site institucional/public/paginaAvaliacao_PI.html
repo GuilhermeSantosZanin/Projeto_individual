@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/paginaAvaliacao_PI.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="janela-avaliacao">
+
+            <div class="nome_bairro">
+                <label for="ipt_bairro" style="color: yellow;">Qual o nome do bairro?</label>
+            </div>
+            <div class=""><input type="text" id="ipt_bairro"></div>
+
+            <div class="zona">
+                <label for="ipt_zona" style="color: yellow;">Escolha a Zona do bairro:</label>
+            </div>
+            <select name="" id="ipt_zona">
+                <option value="Zona Sul">Zona Sul</option>
+                <option value="Zona Leste">Zona Leste</option>
+                <option value="Zona Oeste">Zona Oeste</option>
+                <option value="Zona Norte">Zona Norte</option>
+                <option value="Centro">Centro</option>
+            </select>
+
+            <div class="nota_bairro">
+                <label for="ipt_nota" style="color: yellow;">Nota do bairro (0 a 10)</label>
+            </div>
+            <input type="number" id="ipt_nota">
+
+            <div class="descricao">
+                <label for="ipt_descricao" style="color: yellow;">Descrição (opcional)</label>
+            </div>
+            <input type="text" id="ipt_descricao">
+
+            <button onclick="cadastrar_quiz()" class="botao-cadastrar">Enviar avaliação</button>
+            <div id="mensagem_erro" style="color: yellow;"></div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function cadastrar_quiz() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var bairroVar = ipt_bairro.value;
+        var zonaVar = ipt_zona.value;
+        var notaVar = ipt_nota.value;
+        var descricaoVar = ipt_descricao.value;
+
+
+        // Verificando todas a possibilidades do cadastro
+        let campos = [bairroVar, zonaVar, notaVar];
+        let nomesCampos = ['Bairro', 'Zona', 'Nota']
+
+        for (i = 0; i < campos.length; i++) {
+            if (campos[i] == "") {
+                mensagem_erro.innerHTML = `O campo ${nomesCampos[i]} esta em branco!`
+                return false;
+            }
+        }
+        if (notaVar < 0 || notaVar > 10) {
+            mensagem_erro.innerHTML = "Nota invalida! Precisa ser de (0 a 10)";
+            return false;
+        }
+
+        // Enviando o valor da nova input
+        fetch("/quiz/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                bairroServer: bairroVar,
+                zonaServer: zonaVar,
+                notaServer: notaVar,
+                descricaoServer: descricaoVar,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    mensagem_erro.innerHTML =
+                        "Avaliação cadastrada com sucesso...";
+
+                    setTimeout(() => {
+                        window.location = "dashBoard_PI.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar cadastrar a avaliação!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            });
+
+        return false;
+    }
+
+    // Listando empresas cadastradas
+
+</script>

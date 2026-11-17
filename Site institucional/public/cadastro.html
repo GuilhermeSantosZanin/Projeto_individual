@@ -75,10 +75,7 @@
                         <input class="entrada" id="confirmacao_senha_input" type="password" />
                     </div>
 
-                    <div class="campo">
-                        <span>CPF:</span>
-                        <input class="entrada" id="cpf_input" type="text" />
-                    </div>
+                    
 
                     <button class="botao" onclick="cadastrar()">Cadastrar</button>
 
@@ -112,16 +109,16 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        var cpfVar = cpf_input.value;
+        
 
         // Verificando todas a possibilidades do cadastro
-        let campos = [nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar];
+        let campos = [nomeVar, emailVar, senhaVar, confirmacaoSenhaVar];
+        let nomesCampos = ['Nome','E-mail','Senha','Confirmação de senha']
 
         for (i = 0; i < campos.length; i++) {
             if (campos[i] == "") {
                 cardErro.style.display = "block";
-                mensagem_erro.innerHTML =
-                    "(Mensagem de erro para todos os campos em branco)";
+                mensagem_erro.innerHTML =`O campo ${nomesCampos[i]} esta em branco!`
                 return false;
             } else {
                 setInterval(sumirMensagem, 5000);
@@ -135,7 +132,7 @@
 
         if (senhaVar.length <= 8) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Frase muito curta!";
+            mensagem_erro.innerHTML = "Senha muito curta!";
             return false;
         }
         if (!emailVar.endsWith(".com")) {
@@ -163,11 +160,8 @@
             mensagem_erro.innerHTML = "Precisa ter algo escrito antes do @"
             return false;
         }
-        if (cpfVar.length != 14) {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "O cpf precisa ter 14 caracteres contanto com pontos e traços!"
-            return false;
-        }
+        
+        
 
 
         // Enviando o valor da nova input
@@ -182,7 +176,6 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                cpfServer: cpfVar,
             }),
         })
             .then(function (resposta) {

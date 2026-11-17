@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -66,6 +65,7 @@ body {
 
 .card-login {
     width: 450px;
+    height: 410px;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
@@ -73,6 +73,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.registrar {
+    padding: 20px 10px;
+    font-size: 20px;
 }
 
 .titulo-login {
@@ -134,4 +139,7 @@ body {
 
 #div_erros_login {
     display: none;
+}
+.botao-cadastro{
+    text-decoration: none;
 }

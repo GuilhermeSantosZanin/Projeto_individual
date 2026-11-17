@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: Arial;
     background-color: white;
+    padding-top: 96px;
 }
 
 * {
@@ -15,14 +16,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: #18191B;
     padding-left: 5%;
     padding-right: 5%;
-}
-
-.img-logo {
-    width: 173px;
-    height: 35px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 .menu {
@@ -31,101 +30,170 @@ body {
     align-items: center;
 }
 
-.menu-cadastro {
+.menu-login {
     background-color: #FFCC00;
-    width: 142px;
+    width: 130px;
     height: 43px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
+    text-decoration: none;
+    font-size: 22px;
 }
 
-.menu-inicio,
-.menu-login {
+.menu-inicio {
     color: white;
+    text-decoration: none;
 }
 
 .primeira-parte {
     width: 100%;
-    height: 630px;
-    display: flex;
+    height: 648px;
     background-color: black;
-}
-
-.conteudo-centralizado {
-    max-width: 1440px;
-    margin: auto;
     display: flex;
-    width: 90%;
+    padding-left: 5%;
+    justify-content: center;
 }
 
-.parte-esquerda {
+.conteudo-texto {
     width: 50%;
-    height: 680px;
+
 }
 
-.frase-titulo {
+.titulo-primeira-parte {
     color: white;
-    font-size: 55px;
-}
-
-.sub-titulo {
-    color: white;
-    font-size: 23px;
-    margin-top: 100px;
-    font-weight: 100;
-}
-
-.solicitar-mudanca {
-    background-color: #FFCC00;
-    width: 305px;
-    height: 64px;
-    margin-top: 40px;
-    color: black;
-    font-size: 24px;
-    font-weight: 720;
-    border-radius: 15px;
-    border: none;
-}
-
-.parte-direita {
-    width: 50%;
-    background-color: white;
+    font-size: 44px;
+    margin-top: 127px;
 }
 
 .imagem-primeira-parte {
-    width: 500px;
-    height: 300px;
-    margin-left: 82px;
-    margin-top: 230px;
+    width: 450px;
+    height: 440px;
+    background-color: #26282B;
+    border-radius: 8px;
+    margin-top: 84px;
+    margin-left: 100px;
+}
+
+.texto-primeira-parte {
+    color: white;
+    margin-top: 62px;
+    font-size: 20px;
+    font-weight: 150;
 }
 
 .segunda-parte {
+    background-color: #F5F5F3;
     width: 100%;
-    height: 670px;
-    background-color: white;
+    height: 700px;
     display: flex;
+    justify-content: center;
+    padding-left: 5%;
 }
 
-.titulo-parte-2 {
-    margin-top: 144px;
-    margin-left: 100px;
-    font-size: 44px;
+.titulo-segunda-parte {
+    color: black;
+    font-size: 37px;
     font-weight: 700;
+    margin-top: 82px;
 }
 
-.sub-titulo-parte-2 {
-    margin-top: 72px;
-    margin-left: 100px;
-    font-size: 19px;
+.texto-segunda-parte {
+    color: black;
+    font-size: 21px;
     font-weight: 200;
+    margin-top: 39px;
 }
 
 .imagem-segunda-parte {
+    width: 450px;
+    height: 440px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin-left: 100px;
+    margin-top: 140px;
+
+}
+
+.terceira-parte {
+    width: 100%;
+    background-color: black;
+    height: 595px;
+    padding-left: 5%;
+    padding: 5%;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+}
+
+.titulo-terceira-parte {
+    color: white;
+    font-size: 37px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-left: 56px;
+}
+
+.texto-terceira-parte {
+    margin-top: 45px;
+    font-size: 21px;
+    font-weight: 200;
+    color: white;
+    margin-left: 56px;
+}
+
+.imagem-terceira-parte {
+    background-color: #26282B;
+    width: 450px;
+    height: 440px;
+    border-radius: 8px;
+
+}
+
+.quarta-parte {
+    width: 100%;
+    height: 595px;
+    background-color: #F5F5F3;
+    display: flex;
+    padding: 5%;
+    justify-content: center;
+}
+
+.titulo-quarta-parte {
+    font-size: 34px;
+    margin-left: 56px;
+    font-weight: 700;
+}
+
+.texto-quarta-parte {
+    color: black;
+    font-size: 21px;
+    font-weight: 200;
+    margin-top: 39px;
+    margin-left: 56px;
+}
+
+.imagem-quarta-parte img {
     width: 500px;
-    height: 300px;
-    margin-left: 82px;
-    margin-top: 230px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.botao-acessar {
+    background-color: #FFCC00;
+    color: black;
+    width: 600px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 56px;
+    margin-top: 23px;
+    font-size: 25px;
+    border: none;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
 }
