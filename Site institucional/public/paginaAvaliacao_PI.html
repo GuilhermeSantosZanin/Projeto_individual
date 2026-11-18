@@ -61,7 +61,7 @@
         var zonaVar = ipt_zona.value;
         var notaVar = ipt_nota.value;
         var descricaoVar = ipt_descricao.value;
-
+        var fk_usuariosVar = sessionStorage.ID_USUARIO;
 
         // Verificando todas a possibilidades do cadastro
         let campos = [bairroVar, zonaVar, notaVar];
@@ -91,6 +91,7 @@
                 zonaServer: zonaVar,
                 notaServer: notaVar,
                 descricaoServer: descricaoVar,
+                fk_usuariosServer: fk_usuariosVar
             }),
         })
             .then(function (resposta) {

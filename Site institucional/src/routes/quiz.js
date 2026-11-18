@@ -8,5 +8,17 @@ router.post("/cadastrar", function (req, res) {
     quizController.cadastrar(req, res);
 })
 
+router.get("/listar", function (req, res) {
+    quizController.listar(req, res);
+});
+
+router.get("/contarAvaliacao", function (req, res) {
+    quizController.contarAvaliacao(req, res);
+});
+
+router.get("/contarZona", function (req, res) {
+    quizController.contarZona(req, res);
+});
+
 
 module.exports = router;
